@@ -1,5 +1,6 @@
 exports.run = {
-   usage: ['q'],
+   usage: ['quoted'],
+   hidden: ['q'],
    use: 'reply chat',
    category: 'group',
    async: async (m, {
