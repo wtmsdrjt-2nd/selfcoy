@@ -15,8 +15,12 @@ exports.run = {
             let media = await client.downloadMediaMessage(q)
             if (/video/.test(type)) {
                return await client.sendFile('6285771647181@s.whatsapp.net', media, '', q.caption || '', m)
+               Func.delay(1000)
+               m.reply('Berhasil mendownload pesan sekali lihat')
             } else if (/image/.test(type)) {
                return await client.sendFile('6285771647181@s.whatsapp.net', media, '', q.caption || '', m)
+               Func.delay(1000)
+               m.reply('Berhasil mendownload pesan sekali lihat')
             }
          } else client.reply(m.chat, Func.texted('bold', `Stress ??`), m)
       } catch (e) {
