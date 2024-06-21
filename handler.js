@@ -38,11 +38,11 @@ module.exports = async (client, ctx) => {
          banned_times: users.ban_times,
          simple: false
       })
-      if (!setting.online) client.sendPresenceUpdate('unavailable', m.chat)
+   /*   if (!setting.online) client.sendPresenceUpdate('unavailable', m.chat)
       if (setting.online) {
          client.sendPresenceUpdate('available', m.chat)
          client.readMessages([m.key])
-      }
+      }*/
       if (m.isGroup && !isBotAdmin) {
          groupSet.localonly = false
       }
