@@ -14,13 +14,9 @@ exports.run = {
             let q = m.quoted.message[type]
             let media = await client.downloadMediaMessage(q)
             if (/video/.test(type)) {
-               return await client.sendFile('6285771647181@s.whatsapp.net', media, '', q.caption || '', m)
-               await Func.delay(1000)
-               client.reply(m.chat, 'Berhasil mendownload pesan sekali lihat', m)
+               return await client.sendFile(m.chat, media, '', q.caption || '', m)
             } else if (/image/.test(type)) {
-               return await client.sendFile('6285771647181@s.whatsapp.net', media, '', q.caption || '', m)
-               await Func.delay(1000)
-               client.reply(m.chat, 'Berhasil mendownload pesan sekali lihat', m)
+               return await client.sendFile(m.chat, media, '', q.caption || '', m)         
             }
          } else client.reply(m.chat, Func.texted('bold', `Stress ??`), m)
       } catch (e) {
