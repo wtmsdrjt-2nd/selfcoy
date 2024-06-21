@@ -24,7 +24,6 @@ exports.run = {
       }
    },
    error: false,
-   group: true,
    cache: true,
    location: __filename
 }
