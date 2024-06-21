@@ -1,5 +1,6 @@
 exports.run = {
-   usage: ['rvo'],
+   usage: ['readviewonce'],
+   hidden: ['rvo'],
    use: 'reply viewonce',
    category: 'group',
    async: async (m, {
