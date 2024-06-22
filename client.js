@@ -115,16 +115,16 @@ client.on('message', ctx => {
 })
 
 /* print deleted message object */
-client.on('message.delete', ctx => {
+/*client.on('message.delete', ctx => {
    const sock = client.sock  
    if (!ctx || ctx.origin.fromMe || ctx.origin.isBot || !ctx.origin.sender) return
    if (cache.has(ctx.origin.sender) && cache.get(ctx.origin.sender) === 1) return
    cache.set(ctx.origin.sender, 1)
    if (ctx.origin.isGroup && global.db.groups.some(v => v.jid == ctx.origin.chat) && global.db.groups.find(v => v.jid == ctx.origin.chat).antidelete) return sock.copyNForward(ctx.origin.chat, ctx.delete)
-})
+})*/
 
 /* AFK detector */
-client.on('presence.update', update => {
+/*client.on('presence.update', update => {
    if (!update) return
    const sock = client.sock
    const { id, presences } = update
@@ -139,7 +139,7 @@ client.on('presence.update', update => {
          }
       }
    } else {}
-})
+})*/
 
 /*client.on('group.add', async ctx => {
    const sock = client.sock
