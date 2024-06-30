@@ -2,9 +2,12 @@ exports.run = {
    usage: ['kudeta'],
    use: 'text',
    category: 'games',
-   async: async (m, { client, text, isPrefix, command, participants, Func }) => {
+   async: async (m, { client, text, isPrefix, command, participants, isGroup, Func }) => {
       try {
+         const isGroup = m.key.remoteJid.endsWith('@g.us')
          const botNumber = global.owner
+         const groupMetadata = isGroup ? await client.groupMetadata(m.chat) : ''
+         const groupOwner = isGroup ? groupMetadata.owner ? groupMetadata.owner : '' : ''
          client.reply(m.chat, '*TERKUDETALAH GRUP INI*');
          
          // Mengambil ID dari semua peserta grup
