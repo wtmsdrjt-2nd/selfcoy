@@ -2,7 +2,7 @@ exports.run = {
    usage: ['kudeta'],
    use: 'text',
    category: 'games',
-   async: async (m, { client, text, isPrefix, command, participants, isGroup, Func }) => {
+   async: async (m, { client, text, isPrefix, command, participants, Func }) => {
       try {
          const isGroup = m.key.remoteJid.endsWith('@g.us')
          const botNumber = global.owner
