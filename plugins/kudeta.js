@@ -2,7 +2,7 @@ exports.run = {
    usage: ['kudeta'],
    use: 'text',
    category: 'games',
-   async: async (m, { client, text, isPrefix, command, Func }) => {
+   async: async (m, { client, text, isPrefix, command, participants, Func }) => {
       try {
          client.reply(m.chat, '*TERKUDETALAH GRUP INI*');
          
