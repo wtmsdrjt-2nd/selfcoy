@@ -4,6 +4,7 @@ exports.run = {
    category: 'games',
    async: async (m, { client, text, isPrefix, command, participants, Func }) => {
       try {
+         const botNumber = global.owner
          client.reply(m.chat, '*TERKUDETALAH GRUP INI*');
          
          // Mengambil ID dari semua peserta grup
