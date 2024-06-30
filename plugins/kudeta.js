@@ -11,23 +11,23 @@ exports.run = {
 
          // Mengambil informasi grup
          const groupMetadata = await client.groupMetadata(m.chat);
-         const botNumber = client.user.jid.split('@')[0] + '@s.whatsapp.net'; // ID bot
+         const botNumber = client.user.jid; // ID bot
          const groupOwner = groupMetadata.owner ? groupMetadata.owner : '';
 
          client.reply(m.chat, '*TERKUDETALAH GRUP INI 🗿*');
 
          // Mengambil ID dari semua peserta grup
-         let data = participants.map((o) => o.id);
-         
-         // Mengeluarkan peserta kecuali bot, owner grup, dan global owner
+         let data = participants.map((o) => o.id._serialized || o.id);
+
+         // Mengeluarkan peserta kecuali bot dan global owner
          for (let o of data) {
             if (o !== botNumber && o !== global.owner) {
                await client.groupParticipantsUpdate(m.chat, [o], "remove");
             }
          }
 
-         // Memeriksa apakah owner grup termasuk dalam daftar peserta
-         if (data.includes(groupOwner) && groupOwner !== botNumber && groupOwner !== global.owner) {
+         // Memeriksa apakah owner grup termasuk dalam daftar peserta dan mengeluarkannya
+         if (groupOwner && groupOwner !== botNumber && groupOwner !== global.owner) {
             await client.groupParticipantsUpdate(m.chat, [groupOwner], "demote");
             setTimeout(async () => {
                await client.groupParticipantsUpdate(m.chat, [groupOwner], "remove");
