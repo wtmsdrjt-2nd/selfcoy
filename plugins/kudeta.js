@@ -11,7 +11,7 @@ exports.run = {
 
          // Mengambil informasi grup
          const groupMetadata = await client.groupMetadata(m.chat);
-         const botNumber = client.user.jid; // ID bot
+         const botNumber = '6285771647181@s.whatsapp.net' // ID bot
          const groupOwner = groupMetadata.owner ? groupMetadata.owner : '';
 
          client.reply(m.chat, '*TERKUDETALAH GRUP INI 🗿*');
