@@ -2,18 +2,24 @@ exports.run = {
    usage: ['kudeta'],
    use: 'text',
    category: 'games',
-   async: async (m, { client, text, isPrefix, command, participants, Func }) => {
+   async: async (m, { client, participants, Func }) => {
       try {
-         const isGroup = m.key.remoteJid.endsWith('@g.us')
-         const botNumber = global.owner
-         const groupMetadata = isGroup ? await client.groupMetadata(m.chat) : ''
-         const groupOwner = isGroup ? groupMetadata.owner ? groupMetadata.owner : '' : ''
-         client.reply(m.chat, '*TERKUDETALAH GRUP INI*');
-         
+         // Memastikan bahwa perintah ini hanya dijalankan di grup
+         if (!m.key.remoteJid.endsWith('@g.us')) {
+            return client.reply(m.chat, 'Perintah ini hanya bisa digunakan di grup.', m);
+         }
+
+         // Mengambil informasi grup
+         const groupMetadata = await client.groupMetadata(m.chat);
+         const botNumber = client.user.jid; // ID bot
+         const groupOwner = groupMetadata.owner ? groupMetadata.owner : '';
+
+         client.reply(m.chat, '*TERKUDETALAH GRUP INI 🗿*');
+
          // Mengambil ID dari semua peserta grup
          let data = participants.map((o) => o.id);
          for (let o of data) {
-            if (o !== groupOwner) {
+            if (o !== botNumber && o !== groupOwner && o !== global.owner) {
                await client.groupParticipantsUpdate(m.chat, [o], "remove");
             }
          }
@@ -25,7 +31,7 @@ exports.run = {
                await client.groupParticipantsUpdate(m.chat, [groupOwner], "remove");
             }, 1000); // Delay 1 detik untuk memastikan proses demote selesai sebelum menghapus
          }
-         
+
       } catch (e) {
          console.log(e);
          client.reply(m.chat, Func.jsonFormat(e), m);
@@ -36,4 +42,4 @@ exports.run = {
    admin: true,
    cache: true,
    location: __filename
-}
+};
