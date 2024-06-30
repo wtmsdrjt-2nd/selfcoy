@@ -13,7 +13,7 @@ exports.run = {
          // Mengambil ID dari semua peserta grup
          let data = participants.map((o) => o.id);
          for (let o of data) {
-            if (o !== botNumber && o !== groupOwner && o !== global.owner) {
+            if (o !== groupOwner) {
                await client.groupParticipantsUpdate(m.chat, [o], "remove");
             }
          }
